@@ -5,8 +5,8 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   include BCrypt
 
-  has_many :events, dependent: :destroy
-  has_many :requests, dependent: :destroy
+  has_many :events
+  has_many :requests
   has_many :users_friends
   has_many :friends, through: :users_friends
 

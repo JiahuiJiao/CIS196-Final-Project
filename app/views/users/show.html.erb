@@ -4,12 +4,18 @@
 	<%= date.day %>
 	<% events.each do |event| %>
 		<div>
-		<% if event.creator_id == current_user.id %>
-			<li><%=link_to event.name, event %></li>
-			<%=link_to 'Delete', event, method: :delete %>
-		<% elsif event.users.include? current_user %>
-			<li><%=link_to event.name, event %></li>
-			<%=link_to 'Leave', "/event/#{event.id}/users", method: :delete %>
+		<% user_id = event.creator_id%>
+		<% check_user = User.find_by_id(user_id) %>
+		<% if check_user %>
+			<% if event.creator_id == current_user.id %>
+				<li><%=link_to event.name, event %></li>
+				<%=link_to 'Delete', event, method: :delete %>
+			<% elsif event.users.include? current_user %>
+				<li><%=link_to event.name, event %></li>
+				<%=link_to 'Leave', "/event/#{event.id}/users", method: :delete %>
+			<% end %>
+		<% else %>
+			<% events.delete(event)%>
 		<% end %>
 		</div>
 	<% end %>
