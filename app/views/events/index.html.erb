@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Creator</th>
+      <th>Participants</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+	<% if event.creator_id == current_user.id %>
+      		<tr>
+        	<td><%= event.name %></td>
+        	<td><%= event.description %></td>
+       	 	<td><%= event.start_time %></td>
+        	<td><%= event.end_time %></td>
+		<% user_id = event.creator_id %>
+		<% user = User.find(user_id) %>
+        	<td><%= user.name %></td>
+		<% event.users.each do |participant|%>
+		<td><%= participant.name%></td>
+		<% end %>
+        	<td><%= link_to 'Show', event %></td>
+        	<td><%= link_to 'Edit', edit_event_path(event) %></td>
+        	<td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      		</tr>
+	<% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= month_calendar events: @events do |date, events|%>
+	<%= date %>
+	<% events.each do |event| %>
+		<div>
+		<% if event.creator_id == current_user.id %>
+			<%= event.name %>
+		<% end %>
+		</div>
+	<% end %>
+<% end %>
+
+
+<%= link_to 'New Event', new_event_path %>

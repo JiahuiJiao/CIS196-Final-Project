@@ -1,0 +1,15 @@
+<h1 id="log_in">Log In</h1>
+
+<%= form_tag url: login_path do %>
+
+  <p><%= label_tag :name, "Name", :class => "session_label" %></p>
+
+  <p><%= text_field_tag :name, "", :class => "session_field"%></p>
+
+  <%= label_tag :password, "Password", :class => "session_label" %><br>
+  <%= password_field_tag :password, "", :class => "session_field" %>
+  <br>
+
+  <p><%= submit_tag 'Log in', :class => "session_button"%></p>
+  <p><a class="session_button1" href="/">Back</a></p>
+<% end %>

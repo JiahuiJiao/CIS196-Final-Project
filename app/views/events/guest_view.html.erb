@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<% current_user = @current_user %>
+
+<div class="event_info">
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @event.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @event.end_time %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <% user_id = @event.creator_id %>
+  <% user = User.find(user_id) %>
+  <%= user.name %>
+</p>
+
+<p>
+    <strong>Participants:</strong>
+  <% users = @event.users %>
+  <% users.each do |user| %>
+    <td><%= user.name %></td>
+  <% end %>
+</p>
+</div>
+<p>        <% if @event.users.include? current_user %>
+        <%= link_to 'Leave', "/event/#{@event.id}/users", method: :delete, :class => "event_button_1" %>
+        <% else %>
+        <%= link_to 'Join', "/event/#{@event.id}/users", method: :post, :class => "event_button_1" %>
+        <% end %>
+</p>
+<p><a class="event_button" href="/<%=current_user.id%>/guestviews/<%= @event.creator_id%>">Back</a></p>

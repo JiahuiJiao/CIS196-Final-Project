@@ -1,0 +1,18 @@
+<h1 class="welcome-banner">  </h1>
+<!-- TODO: Greet the current user! -->
+
+<% if logged_in? %>
+	<div id='message'>
+  		<h4> Hi <%= current_user.name %> </h4>
+  		<p><a class="button_login" href="/users/<%= current_user.id %>">Show Calendar</a></p>
+  		<p><a class="button_logout" href="/logout">Log Out</a></p>
+	</div>
+
+	<% else %>
+		<div id='message2'>
+			<h4> Hi, you are not currently logged in </h4>
+			<h4> Click below to log in or sign up </h4>
+			<p> <a class="button1" href="/login">Log in</a> </p>
+			<p> <a class="button2" href="/users/new">Sign Up</a></p>
+		</div>
+<% end %>

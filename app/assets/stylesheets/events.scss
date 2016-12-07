@@ -1,0 +1,57 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#error_explanation{
+	text-align: center;
+}
+
+.event_field{
+	margin-left: 300px;
+	padding: 15px 32px;
+}
+
+.event_actions{
+		margin-left: 450px;
+		background-color: #C0C0C0;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+}
+
+.event_button{
+		margin-left: 450px;
+		background-color: #C0C0C0;
+		border: none;
+		color: white;
+		text-color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+}
+
+.event_info{
+		border: none;
+		font-size: 20px;
+		padding: 15px 32px;
+		text-align: center;
+}
+
+.event_button_1{
+		margin-left: 450px;
+		background-color: #4CAF50;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-color: white;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+}

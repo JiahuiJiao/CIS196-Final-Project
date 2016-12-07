@@ -1,0 +1,15 @@
+<% @requests = Request.all %>
+<% count = 0 %>
+<% @requests.each do |request| %>
+	<% if request.to_id == @user.id %>
+		<% count = count + 1 %>
+		<% from = User.find(request.from_id).name%>
+		<td><%= 'You have received a friend request from ' + "#{from}. " + 'Please respond to the request.'%>
+	        <td><%= link_to 'Accept Friend Request', request, method: :post %></td>
+        <td><%= link_to 'Decline Friendship', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% end %>
+<% end %>
+
+	<% if count == 0 %>
+	<%= 'Currently, you do not have any friend request' %>
+	<% end %>

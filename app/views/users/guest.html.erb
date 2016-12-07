@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<% @events = Event.all %>
+
+<%= current_user.name %>
+<%= month_calendar events: @events do |date, events|%>
+  <%= date.day %>
+  <% events.each do |event| %>
+    <div>
+
+    <%# Go through all events and check if the view target is a participant of the event. Display
+    the event and a link to join the event%>
+    <% if event.users.include? @view_target %>
+      <li><%= link_to event.name, "/event/#{event.id}/guest/#{current_user.id}" %></li>
+        <% if event.users.include? current_user %>
+        <%= link_to 'Leave', "/event/#{event.id}/users", method: :delete %>
+        <% else %>
+        <%= link_to 'Join', "/event/#{event.id}/users", method: :post %>
+        <% end %>
+      <% end %>
+
+    </div>
+
+
+
+  <% end %>
+<% end %>

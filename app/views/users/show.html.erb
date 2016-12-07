@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<%= month_calendar events: @events do |date, events|%>
+	<%= date.day %>
+	<% events.each do |event| %>
+		<div>
+		<% if event.creator_id == current_user.id %>
+			<li><%=link_to event.name, event %></li>
+			<%=link_to 'Delete', event, method: :delete %>
+		<% elsif event.users.include? current_user %>
+			<li><%=link_to event.name, event %></li>
+			<%=link_to 'Leave', "/event/#{event.id}/users", method: :delete %>
+		<% end %>
+		</div>
+	<% end %>
+<% end %>
+
+<p><%= link_to 'Add Event', new_event_path, :class => 'link_button' %></p>

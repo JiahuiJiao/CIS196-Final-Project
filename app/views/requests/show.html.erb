@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From:</strong>
+  <%= @request.from_id %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @request.to_id %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<% if logged_in? %>
+  <div id="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <div id="table">
+        <td><%= user.name %></td>
+      </div>
+
+        <div id="table">
+        <td><%= user.email %></td>
+      </div>
+        <% if user == current_user %>
+        <td><%= link_to 'Show', user, :class => 'link_button' %></td>
+        <% else %>
+          <%if user.friends.include? current_user %> 
+          <td><%= link_to 'Show', "#{current_user.id}/guestviews/#{user.id}", :class => 'link_button' %></td>
+              <td><%= link_to 'Unfriend', "/#{current_user.id}/unfriend/#{user.id}", method: :delete, :class => 'link_button' %> </td>
+              
+          <% else %>
+          <td><%= link_to 'Send Friend Request', "/requests/new/#{current_user.id}/#{user.id}", method: :post, :class => 'link_button' %></td>
+          <% end %>
+        <% end %>
+
+        <% if user == current_user%>
+          <td><%= link_to 'Edit', edit_user_path(user), :class => 'link_button' %></td>
+          <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "link_button" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+<% else %>
+    <div id='message2'>
+      <h4> Hi, you are not currently logged in </h4>
+      <h4> Click below to log in or sign up </h4>
+      <p> <a class='button1' href='/login'>Log in</a> </p>
+      <p> <a class='button2' href='/users/new'>Sign Up</a></p>
+    </div>
+<% end %>
+<br>

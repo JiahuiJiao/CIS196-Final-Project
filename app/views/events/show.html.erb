@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<div class="event_info">
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @event.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @event.end_time %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <% user_id = @event.creator_id %>
+  <% user = User.find(user_id) %>
+  <%= user.name %>
+</p>
+
+<p>
+    <strong>Participants:</strong>
+  <% users = @event.users %>
+  <% users.each do |user| %>
+    <td><%= user.name %></td>
+  <% end %>
+</p>
+
+</div>
+
+<p><%= link_to 'Edit', edit_event_path(@event), :class => "event_button_1" %></p>
+        <td><%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "event_button_1" %></td>
+<p><a class="event_button" href="/users/<%= current_user.id %>">Cancel</a></p>

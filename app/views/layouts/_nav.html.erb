@@ -1,0 +1,23 @@
+<nav class="nav-banner">
+  <a class="nav-btn" href="/">Home</a>
+
+  <% if !logged_in? %>
+  <a class="nav-btn" href='/login'>Log in</a>
+  <a class="nav-btn" href='/users/new'>Sign up</a>
+  <% end %>
+
+  <!-- Add link to user's show page and log out button if logged in -->
+  <!-- Add log out link otherwise -->
+  <% if logged_in? %>
+    <a class="nav-btn" href="/users">View Users</a>
+    <a class="nav-btn" href="/users/<%= current_user.id %>">View My Calendar</a>
+    <a class="nav-btn" href='/users/<%= current_user.id%>/friends'> View My Friends </a>
+    <a class="nav-btn" href='/users/<%= current_user.id%>/requests'> View My Friend Request </a>
+    <a class="nav-btn" href='/logout'>Log out</a>
+  <% end %>
+
+
+
+  <span class="nav-sessions">
+  </span>
+</nav>

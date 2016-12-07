@@ -1,0 +1,61 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.welcome-banner {
+  text-align: center;
+}
+
+#message {
+	text-align: center;
+	font-size: 32px;
+
+	a.button_login{
+		background-color: #4CAF50;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+	}
+
+	a.button_logout{
+		background-color: #6F797A;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+	}
+}
+
+#message2 {
+	font-size: 32px;
+	text-align: center;
+
+
+	a.button1{
+		background-color: #4CAF50;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+	}
+
+	a.button2{
+		background-color: #008CBA;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+	}
+}
